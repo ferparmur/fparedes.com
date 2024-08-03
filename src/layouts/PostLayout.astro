@@ -33,7 +33,7 @@ const minutes = 2;
                     <time datetime={dateFormat(pubDate, 'yyyy-mm-dd')}>{dateFormat(pubDate, 'd mmmm yyyy')}</time>
                     / {tags?.map((tag: string): string => `#${tag}`)}
                     {/* TODO: inline SVG */}
-                    / <img src="img/stopwatch.svg" aria-label="Reading Time" width="16" height="16"/> {minutes}
+                    / <img src="/img/stopwatch.svg" aria-label="Reading Time" width="16" height="16"/> {minutes}
                     minute{minutes > 1 ? 's' : ''}
                 </p>
             </div>
