@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostListing from "../components/PostListing.astro";
-
 const allPosts = await Astro.glob('./blog/*.md');
 ---
 
@@ -41,7 +40,7 @@ const allPosts = await Astro.glob('./blog/*.md');
     <section id="blog" class="section blog">
         <h2>Blog</h2>
         <ul class="blog-articles">
-            {allPosts.map((post, index) =>
+            {allPosts.map((post) =>
                     <PostListing
                             url={post.url}
                             title={post.frontmatter.title}
@@ -87,7 +86,7 @@ const allPosts = await Astro.glob('./blog/*.md');
                               name="message"
                               rows="4"
                               placeholder="Your Message"
-                              onInput="this.parentNode.dataset.replicatedValue = this.value"
+                              oninput="this.parentNode.dataset.replicatedValue = this.value"
                               required></textarea>
                 </div>
             </div>
