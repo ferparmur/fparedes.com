@@ -8,9 +8,10 @@ import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const {title, pubDate, tags} = Astro.props.frontmatter;
+const {title, pubDate, tags} = Astro.props;
 
-const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).minutes), 1);
+//const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).minutes), 1);
+const minutes = 2;
 ---
 
 <!doctype html>
