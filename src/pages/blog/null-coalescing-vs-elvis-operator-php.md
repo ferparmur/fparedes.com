@@ -4,7 +4,7 @@ title: 'Null coalescing (??) operator vs Elvis (?:) operator in PHP – they are
 pubDate: 2018-11-20
 author: 'Fernando Paredes'
 image:
-  url: 'https://assets.fparedes.com/question-1350x750.jpg'
+  url: '../../img/question.jpg'
   alt: 'Neon question mark'
 tags: [ "PHP" ]
 ---

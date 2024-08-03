@@ -4,7 +4,6 @@ import readingTime from 'reading-time';
 import { Picture } from 'astro:assets';
 
 import '../styles/post.scss'
-import questionImg from '../img/question.jpg'
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -40,7 +39,13 @@ const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).
 
             <div class="featured-image-container">
                 <div class="featured-image-bg" style="background:greenyellow"></div>
-                <Picture src={questionImg} alt="Fernando Paredes" formats={['avif', 'webp']}/>
+                <!--<Picture-->
+                <!--        src={} alt="Fernando Paredes"-->
+                <!--        loading="eager"-->
+                <!--        widths={[280, 360, 390, 700, 768, 900]}-->
+                <!--        sizes="(max-width:280px) 260px,(max-width:360px) 360px,(max-width:390px) 360px,(max-width:700px) 700px,(max-width:768px) 768px,900px"-->
+                <!--        formats={['avif', 'webp']}-->
+                <!--/>-->
             </div>
 
             <div class="container post-content">
