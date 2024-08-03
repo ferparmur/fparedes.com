@@ -1,0 +1,38 @@
+/* 🔲 Layout */
+:root {
+  --container-width: 240px;
+  --extra-width: 280px;
+
+  @media all and (min-width: 360px) {
+    --container-width: 320px;
+    --extra-width: 360px;
+  }
+
+  @media all and (min-width: 390px) {
+    --container-width: 350px;
+    --extra-width: 390px;
+  }
+
+  @media all and (min-width: 700px) {
+    --container-width: 660px;
+    --extra-width: 700px;
+  }
+
+  @media all and (min-width: 768px) {
+    --extra-width: 768px;
+  }
+
+  @media all and (min-width: 900px) {
+    --extra-width: 900px;
+  }
+}
+
+.container {
+  width: var(--container-width);
+  margin: 0 auto;
+}
+
+
+hr {
+  clear: both;
+}

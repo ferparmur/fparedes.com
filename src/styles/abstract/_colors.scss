@@ -1,0 +1,38 @@
+/* 🌈 Color Scheme */
+html {
+  --bg-color: #1e1e1e;
+  --bg-color-soft: #2f2f2f;
+  --text-color: #f8f8f8;
+  --text-color-soft: #a8a8a8;
+  --text-color-softer: #757575;
+  --yellow: #ffcf56;
+  --green: #14d785;
+  --blue: #21cfff;
+  --purple: #eb4dff;
+  --pink: #f84779;
+}
+
+.about-me {
+  --section-color: var(--yellow);
+  --section-contrast: var(--blue);
+}
+
+.blog {
+  --section-color: var(--green);
+  --section-contrast: var(--purple);
+}
+
+.talks {
+  --section-color: var(--blue);
+  --section-contrast: var(--pink);
+}
+
+.courses {
+  --section-color: var(--purple);
+  --section-contrast: var(--green);
+}
+
+.contact {
+  --section-color: var(--pink);
+  --section-contrast: var(--blue);
+}

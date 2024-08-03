@@ -1,0 +1,62 @@
+/* 🗿 Header */
+.site-header {
+  margin-top: 22px;
+  margin-bottom: $section-margin;
+}
+
+.site-title {
+  display: block;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+
+  span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+
+.main-nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+  }
+
+  li {
+    list-style: none;
+    display: inline;
+    font-size: 1rem;
+    margin-right: 1ch;
+
+    &:after {
+      content: '/';
+      margin-left: 1ch;
+      color: var(--text-color-softer);
+    }
+
+    &:last-child {
+      margin-right: 0;
+      &:after {
+        content: '';
+        margin-left: 0;
+      }
+    }
+  }
+
+  a {
+    color: var(--section-color);
+    text-decoration: none;
+  }
+
+  *:focus {
+    box-shadow: 0 0 0 0.2rem var(--section-contrast);
+  }
+
+  ::selection {
+    background-color: var(--section-contrast);
+  }
+}
