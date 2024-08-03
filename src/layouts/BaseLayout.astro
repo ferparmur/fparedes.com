@@ -13,13 +13,13 @@ import Footer from "../components/Footer.astro";
     <title>Fernando Paredes - Web Developer</title>
 </head>
 <body>
-<div class="container">
-    <Header/>
-    <main>
-        <slot/>
-    </main>
 
-    <Footer/>
-</div>
+<Header/>
+
+<main class="container">
+    <slot/>
+</main>
+
+<Footer/>
 </body>
 </html>

@@ -7,7 +7,7 @@ import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const {title, pubDate, tags} = Astro.props.frontmatter;
+const {title, pubDate, tags, image} = Astro.props.frontmatter;
 
 const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).minutes), 1);
 ---
@@ -19,7 +19,7 @@ const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).
     <title>Fernando Paredes - Web Developer</title>
 </head>
 <body>
-<div class="container">
+
     <Header/>
 
     <main>
@@ -35,6 +35,35 @@ const minutes = Math.max(Math.round(readingTime(await Astro.props.rawContent()).
                     minute{minutes > 1 ? 's' : ''}
                 </p>
             </div>
+
+            <div class="featured-image-container">
+                <div class="featured-image-bg" style="background:greenyellow"></div>
+                <img
+                        class="featured-image"
+                        src={image.url}
+                        alt={image.alt}
+                        width="900"
+                        height="500"
+                        srcset="
+                        {{post.featured_image[280]}} 280w,
+                        {{post.featured_image[360]}} 360w,
+                        {{post.featured_image[390]}} 280w,
+                        {{post.featured_image[700]}} 700w,
+                        {{post.featured_image[768]}} 768w,
+                        {{post.featured_image[900]}} 900w,
+                        {{post.featured_image[1350]}} 1350w
+                    "
+                        sizes="
+                        (max-width:280px) 260px,
+                        (max-width:360px) 360px,
+                        (max-width:390px) 360px,
+                        (max-width:700px) 700px,
+                        (max-width:768px) 768px,
+                        900px
+                    "
+                >
+            </div>
+
             <div class="container post-content">
                 <slot/>
             </div>
