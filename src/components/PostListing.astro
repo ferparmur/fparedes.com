@@ -1,4 +1,5 @@
 ---
+import dateFormat from 'dateformat';
 const {url, title, pubDate, tags} = Astro.props
 ---
 <li>
@@ -6,7 +7,7 @@ const {url, title, pubDate, tags} = Astro.props
         <article>
             <h3>{title}</h3>
             <p class="article-meta">
-                <time datetime={pubDate}>{pubDate}</time>
+                <time datetime={dateFormat(pubDate, 'yyyy-mm-dd')}>{dateFormat(pubDate, 'd mmmm yyyy')}</time>
                 / {tags?.map((tag) => `#${tag}`)}
             </p>
         </article>
