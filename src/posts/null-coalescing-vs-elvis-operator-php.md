@@ -1,4 +1,11 @@
 ---
+title: 'Null coalescing (??) operator vs Elvis (?:) operator in PHP – they are different!'
+pubDate: 2018-11-20
+author: 'Fernando Paredes'
+image:
+  url: 'https://assets.fparedes.com/question-1350x750.jpg'
+  alt: 'Neon question mark'
+tags: [ "PHP" ]
 ---
 
 A common doubt that some developers may have is differencing ?? vs ?: in PHP and other languages that support them both
