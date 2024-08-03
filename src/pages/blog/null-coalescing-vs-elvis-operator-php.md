@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/PostLayout.astro
 title: 'Null coalescing (??) operator vs Elvis (?:) operator in PHP – they are different!'
 pubDate: 2018-11-20
 author: 'Fernando Paredes'
