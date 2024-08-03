@@ -1,8 +1,11 @@
 ---
+import dateFormat from 'dateformat';
 import '../styles/post.scss'
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+const {title, pubDate, tags} = Astro.props.frontmatter;
 ---
 
 <!doctype html>
@@ -16,7 +19,20 @@ import Footer from "../components/Footer.astro";
     <Header/>
 
     <main>
-        <slot/>
+        <article>
+            <div class="container">
+                <h1>{title}</h1>
+
+                <p class="article-meta">
+                    <time datetime={dateFormat(pubDate, 'yyyy-mm-dd')}>{dateFormat(pubDate, 'd mmmm yyyy')}</time>
+                    / {tags?.map((tag) => `#${tag}`)}
+                </p>
+            </div>
+            <div class="container post-content">
+                <slot/>
+            </div>
+        </article>
+
     </main>
 
     <Footer/>
