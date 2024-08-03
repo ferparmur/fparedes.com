@@ -1,0 +1,14 @@
+---
+const {url, title, pubDate, tags} = Astro.props
+---
+<li>
+    <a href={url}>
+        <article>
+            <h3>{title}</h3>
+            <p class="article-meta">
+                <time datetime={pubDate}>{pubDate}</time>
+                / {tags?.map((tag) => `#${tag}`)}
+            </p>
+        </article>
+    </a>
+</li>
