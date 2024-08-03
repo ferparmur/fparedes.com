@@ -1,17 +1,79 @@
 ---
 import '../styles/home.scss'
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+<BaseLayout>
+	<section id="about-me" class="section about-me">
+		<img class="avatar" src="img/avatar.svg" alt="Fernando Paredes" width="112" height="112" />
+		<h2>Hi There!</h2>
+		<p>
+			I’m a Senior Software Engineer who has been building and maintaining websites for longer than I want to admit.
+			On this blog I cover topics about PHP, JS, WordPress, Agile and a few other things!
+		</p>
+		<div class="about-me-links">
+			<a class="about-me-more" href="#">More About Me</a>
+			<div class="social-links">
+				<a href="https://twitter.com/ferparmur" title="Follow me on Twitter" target="_blank" rel="noopener"><img src="img/twitter.svg" width="22" height="22" data-inline-svg/></a>
+				<a href="https://github.com/ferparmur" title="Chek my repos on Github" target="_blank" rel="noopener"><img src="img/github.svg" width="22" height="22" data-inline-svg/></a>
+				<a href="https://www.linkedin.com/in/fernando-paredes-murillo/" title="Connect with me on Linkedin" target="_blank" rel="noopener"><img src="img/linkedin.svg" width="22" height="22" data-inline-svg/></a>
+				<a href="https://unsplash.com/@ferparmur" title="See my photos on Unsplash" target="_blank" rel="noopener"><img src="img/unsplash.svg" width="22" height="22" data-inline-svg/></a>
+			</div>
+		</div>
+	</section>
 
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+	<section id="blog" class="section blog">
+		<h2>Blog</h2>
+		<ul class="blog-articles">
+			BLOG
+		</ul>
+
+		<a class="blog-more" href="/blog">More Blog Posts</a>
+	</section>
+
+	<section id="talks" class="section talks">
+		<h2>Talks</h2>
+		<ul class="talks-years">
+			TALKS
+		</ul>
+	</section>
+
+
+	<section id="contact" class="section contact">
+		<h2>Contact</h2>
+		<p class="contact-text">
+			If you want to send me a message, feel free to use the form below. You can also drop me a message on Twitter
+			(<a href="#">@f_paredesmur</a>) or Linkedin (<a href="#">fernando-paredes-murillo</a>).
+		</p>
+
+		<form id="contact-form">
+			<div class="form-group">
+				<label for="user-name">Name</label>
+				<input type="text" id="user-name" name="user-name" placeholder="Name" required>
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" placeholder="Email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="message">Message</label>
+				<div class="grow-wrap">
+					<textarea id="message" name="message" rows="4" placeholder="Your Message" onInput="this.parentNode.dataset.replicatedValue = this.value" required></textarea>
+				</div>
+			</div>
+
+			<div class="g-recaptcha loading" data-sitekey="{{ site.recaptchaKey }}" data-theme="dark" data-size="normal"></div>
+
+			<button
+				class="submit-button"
+				type="submit"
+				data-action='submit'
+			>Send</button>
+
+			<div class="message-holder">
+			</div>
+		</form>
+	</section>
+</BaseLayout>
