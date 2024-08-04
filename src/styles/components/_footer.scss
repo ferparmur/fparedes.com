@@ -1,58 +1,58 @@
 /* 🦶🏻 Footer */
 .site-footer {
-    font-size: .89rem;
-    margin-top: 6rem;
-    padding-bottom: 1rem;
-    border-top: 1px solid var(--text-color-softer);
-    padding-top: 3rem;
-    position: relative;
+  font-size: 0.89rem;
+  margin-top: 6rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid var(--text-color-softer);
+  padding-top: 3rem;
+  position: relative;
 
-    .social-links {
-        svg {
-            height: .89rem;
-            width: auto;
-            margin: 0 1ch 0 0;
-        }
-
-        a {
-            color: var(--text-color-soft);
-        }
+  .social-links {
+    svg {
+      height: 0.89rem;
+      width: auto;
+      margin: 0 1ch 0 0;
     }
+
+    a {
+      color: var(--text-color-soft);
+    }
+  }
 }
 
 .copyright-notice {
-    margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
 }
 
 .extra-credit {
-    margin-top: 1.2rem;
-    font-size: .78rem;
-    color: var(--text-color-soft);
+  margin-top: 1.2rem;
+  font-size: 0.78rem;
+  color: var(--text-color-soft);
 
-    a {
-        color: var(--text-color-soft);
-    }
+  a {
+    color: var(--text-color-soft);
+  }
 }
 
 .back-to-top {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-top: 32px;
+  text-align: right;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: var(--text-color-soft);
+
+  &:before {
+    content: "<";
+    font-weight: 700;
+    font-size: 30px;
     display: block;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    padding-top: 32px;
-    text-align: right;
-    text-decoration: none;
-    text-transform: lowercase;
-    color: var(--text-color-soft);
-
-    &:before {
-        content: '<';
-        font-weight: 700;
-        font-size: 30px;
-        display: block;
-        position: absolute;
-        transform: rotate(90deg);
-        top: 0;
-        left: 2px;
-    }
+    transform: rotate(90deg);
+    top: 0;
+    left: 2px;
+  }
 }

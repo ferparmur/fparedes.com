@@ -1,11 +1,10 @@
-@import 'abstract/vars';
-@import 'abstract/colors';
-@import 'abstract/normalize';
-@import 'abstract/typography';
-@import 'abstract/layout';
-@import 'components/header';
-@import 'components/footer';
-
+@import "abstract/vars";
+@import "abstract/colors";
+@import "abstract/normalize";
+@import "abstract/typography";
+@import "abstract/layout";
+@import "components/header";
+@import "components/footer";
 
 section {
   margin-bottom: $section-margin;
@@ -15,14 +14,13 @@ section {
   }
 }
 
-
 /* 👨🏻 About Me */
 
 .about-me {
   margin-top: $section-margin;
 
   h2 {
-    margin-top: .6rem;
+    margin-top: 0.6rem;
   }
 }
 
@@ -39,7 +37,6 @@ section {
     margin-left: 1ch;
   }
 }
-
 
 /* 📄 Blog */
 .blog-articles {
@@ -63,7 +60,7 @@ section {
 
   .article-meta {
     margin-top: 14px;
-    font-size: .89rem;
+    font-size: 0.89rem;
     color: var(--text-color-soft);
   }
 }
@@ -88,7 +85,7 @@ section {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     color: var(--section-color);
-    letter-spacing: .3ch;
+    letter-spacing: 0.3ch;
     margin-right: 3px;
     font-size: 1.1rem;
   }
@@ -118,18 +115,16 @@ section {
   padding-bottom: 0;
 }
 
-
 .talk-meta {
   margin-top: 0;
   margin-bottom: 12px;
-  font-size: .89rem;
+  font-size: 0.89rem;
   color: var(--text-color-soft);
 }
 
 .talk-title {
   margin: 0;
 }
-
 
 /* 📚 Courses */
 .courses-list {
@@ -171,12 +166,12 @@ section {
 }
 
 .course-info h3 {
-  margin: 0 0 .5rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .course-meta {
   margin: 0;
-  font-size: .89rem;
+  font-size: 0.89rem;
   color: var(--text-color-soft);
 }
 
@@ -185,16 +180,15 @@ section {
   text-decoration: underline;
 }
 
-
 /* ✉️ Contact */
 .contact-text {
-  font-size: .89rem;
+  font-size: 0.89rem;
 }
 
 .contact {
   .form-group {
     position: relative;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     margin-bottom: 1.4rem;
   }
 
@@ -202,19 +196,22 @@ section {
     color: var(--section-color);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: .7rem;
+    font-size: 0.7rem;
     display: block;
-    margin-bottom: .3em;
+    margin-bottom: 0.3em;
   }
 
-  input[type=text], input[type=email], textarea, .grow-wrap {
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  .grow-wrap {
     display: block;
     background: transparent;
     border: 1px solid var(--pink);
     width: 100%;
     color: var(--text-color);
-    font-size: .89rem;
-    padding: .5rem;
+    font-size: 0.89rem;
+    padding: 0.5rem;
     min-height: 1.55rem;
 
     &:-webkit-autofill,
@@ -222,11 +219,13 @@ section {
     &:-webkit-autofill:focus {
       -webkit-text-fill-color: var(--text-color);
       -webkit-box-shadow: 0 0 0 1000px var(--bg-color) inset;
-      font-size: .89rem;
+      font-size: 0.89rem;
     }
 
     &:-webkit-autofill:focus {
-      -webkit-box-shadow: 0 0 0 0.2rem var(--blue), 0 0 0 1000px var(--bg-color) inset;
+      -webkit-box-shadow:
+        0 0 0 0.2rem var(--blue),
+        0 0 0 1000px var(--bg-color) inset;
     }
 
     &:focus {
@@ -238,11 +237,12 @@ section {
     }
   }
 
-  textarea, .grow-wrap {
+  textarea,
+  .grow-wrap {
     resize: none;
     overflow: hidden;
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    transition: .2s;
+    font-family: "Helvetica", "Arial", sans-serif;
+    transition: 0.2s;
     line-height: 1.7;
   }
 
@@ -254,7 +254,7 @@ section {
   }
 
   .grow-wrap::after {
-    content: attr(data-replicated-value) ' ';
+    content: attr(data-replicated-value) " ";
     white-space: pre-wrap;
     visibility: hidden;
     padding-bottom: 1rem;
@@ -270,19 +270,18 @@ section {
   appearance: none;
   background: transparent;
   font-weight: 400;
-  font-size: .89rem;
+  font-size: 0.89rem;
   text-transform: uppercase;
   color: var(--section-color);
   border: 1px solid var(--section-color);
   width: auto;
-  padding: .6rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   line-height: 1;
   cursor: pointer;
 
   &:focus {
     border-color: transparent;
   }
-
 }
 
 .g-recaptcha {
@@ -292,9 +291,9 @@ section {
   width: 298px;
   border: 1px solid var(--section-color);
   border-radius: 3px;
-  transform: scale(.75);
+  transform: scale(0.75);
   transform-origin: 0;
-  margin: .9rem 0;
+  margin: 0.9rem 0;
 
   @media all and (min-width: 360px) {
     transform: none;
@@ -308,8 +307,6 @@ section {
   }
 }
 
-
-
 .loading {
   background: repeating-linear-gradient(
     -55deg,
@@ -321,16 +318,19 @@ section {
   background-size: 49px;
   animation: loadingAnimation 2s linear infinite;
   @keyframes loadingAnimation {
-    0% { background-position: 0 0; }
-    100% { background-position: 49px 0; }
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 49px 0;
+    }
   }
 }
 
-
 .message-holder.success,
 .message-holder.error {
-  margin-top: .7rem;
-  padding: .5rem;
+  margin-top: 0.7rem;
+  padding: 0.5rem;
   border: 1px solid transparent;
   border-left-width: 4px;
 }

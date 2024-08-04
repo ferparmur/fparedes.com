@@ -1,8 +1,9 @@
 /* 🔤 Typography */
-html, body {
+html,
+body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.3;
   font-size: 18px;
 }
@@ -33,7 +34,7 @@ h3 {
 }
 
 p {
-  margin: .2rem 0 .8rem;
+  margin: 0.2rem 0 0.8rem;
 }
 
 .section {

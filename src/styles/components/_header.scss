@@ -33,7 +33,7 @@
     margin-right: 1ch;
 
     &:after {
-      content: '/';
+      content: "/";
       margin-left: 1ch;
       color: var(--text-color-softer);
     }
@@ -41,7 +41,7 @@
     &:last-child {
       margin-right: 0;
       &:after {
-        content: '';
+        content: "";
         margin-left: 0;
       }
     }
