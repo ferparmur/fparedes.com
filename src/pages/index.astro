@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostListing from "../components/PostListing.astro";
+import InlineSvg from "../components/InlineSvg.astro";
 const allPosts = await getCollection("blog");
 ---
 
@@ -29,49 +30,33 @@ const allPosts = await getCollection("blog");
                     title="Follow me on Twitter"
                     target="_blank"
                     rel="noopener"
-                    ><img
-                        src="img/twitter.svg"
-                        width="22"
-                        height="22"
-                        data-inline-svg
-                    /></a
                 >
+                    <InlineSvg svg="twitter" aria-label="Twitter" />
+                </a>
                 <a
                     href="https://github.com/ferparmur"
                     title="Chek my repos on Github"
                     target="_blank"
                     rel="noopener"
-                    ><img
-                        src="img/github.svg"
-                        width="22"
-                        height="22"
-                        data-inline-svg
-                    /></a
                 >
+                    <InlineSvg svg="github" aria-label="Github" />
+                </a>
                 <a
                     href="https://www.linkedin.com/in/fernando-paredes-murillo/"
                     title="Connect with me on Linkedin"
                     target="_blank"
                     rel="noopener"
-                    ><img
-                        src="img/linkedin.svg"
-                        width="22"
-                        height="22"
-                        data-inline-svg
-                    /></a
                 >
+                    <InlineSvg svg="linkedin" aria-label="Linkedin" />
+                </a>
                 <a
                     href="https://unsplash.com/@ferparmur"
                     title="See my photos on Unsplash"
                     target="_blank"
                     rel="noopener"
-                    ><img
-                        src="img/unsplash.svg"
-                        width="22"
-                        height="22"
-                        data-inline-svg
-                    /></a
                 >
+                    <InlineSvg svg="unsplash" aria-label="Unsplash" />
+                </a>
             </div>
         </div>
     </section>
