@@ -31,10 +31,20 @@ section {
 }
 
 .social-links {
+  a {
+    display: inline-block;
+    margin-left: 1ch;
+    padding: .1rem;
+    line-height: 0;
+  }
+
+  a:first-child {
+    margin-left: 0;
+  }
+
   svg {
     height: 1rem;
     width: auto;
-    margin-left: 1ch;
   }
 }
 
