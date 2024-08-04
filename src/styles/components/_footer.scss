@@ -8,15 +8,21 @@
   position: relative;
 
   .social-links {
+    a {
+      display: inline-block;
+      margin-left: 1ch;
+      color: var(--text-color-soft);
+    }
+
+    a:first-child {
+      margin-left: 0;
+    }
+    
     svg {
       height: 0.89rem;
       width: auto;
-      margin: 0 1ch 0 0;
     }
 
-    a {
-      color: var(--text-color-soft);
-    }
   }
 }
 
