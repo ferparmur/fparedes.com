@@ -1,0 +1,32 @@
+---
+/**
+    Thanks to https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/
+    */
+
+import { parse } from "node-html-parser";
+
+export interface Props {
+    svg: string;
+}
+
+async function getSVG(name: string) {
+    const file = await import(`../svg/${name}.svg?raw`);
+    const root = parse(file.default);
+    const svg = root.querySelector("svg");
+    const { attributes, innerHTML } = svg;
+    return {
+        attributes,
+        innerHTML,
+    };
+}
+
+const { svg, ...attributes } = Astro.props as Props;
+const { attributes: baseAttributes, innerHTML } = await getSVG(svg);
+if (attributes["aria-label"] && baseAttributes["aria-hidden"]) {
+    delete baseAttributes["aria-hidden"];
+}
+
+const svgAttributes = { ...baseAttributes, ...attributes };
+---
+
+<svg {...svgAttributes} set:html={innerHTML} />

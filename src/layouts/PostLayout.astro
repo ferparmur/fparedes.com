@@ -6,6 +6,7 @@ import "../styles/post.scss";
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import InlineSvg from "../components/InlineSvg.astro";
 
 const { title, pubDate, tags, minutes, coverImage, coverImageAlt } =
     Astro.props;
@@ -36,13 +37,8 @@ const coverBg = await getImage({
                             >{dateFormat(pubDate, "d mmmm yyyy")}</time
                         >
                         / {tags?.map((tag: string): string => `#${tag}`)}
-                        {/* TODO: inline SVG */}
-                        / <img
-                            src="/img/stopwatch.svg"
-                            aria-label="Reading Time"
-                            width="16"
-                            height="16"
-                        />
+                        /
+                        <InlineSvg svg="stopwatch" aria-label="Reading time" />
                         {minutes}
                         minute{minutes > 1 ? "s" : ""}
                     </p>
