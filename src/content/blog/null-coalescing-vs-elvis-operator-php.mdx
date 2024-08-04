@@ -26,12 +26,13 @@ php > var_dump( false ?? 'bar' );
 bool(false)
 ```
 
-The Elvis operator was introduced in PHP 5.3. In the release note, it was introduced as “ternary shortcut”, which is a
-pretty good description of what it does.
+The Elvis operator was introduced in [PHP 5.3](https://www.php.net/releases/5_3_0.php). In the release note, it was
+introduced as “ternary shortcut”, which is a pretty good description of what it does.
 
-Basically, the ?: operator is a ternary operator that leaves out the second operand (the return value if the condition
-evaluates to true) from the declaration, actually using the same evaluated expression. In other words, that means that
-if the first operand is true, it will return it. Otherwise, it will return the second one. Let’s see a quick example:
+Basically, the ?: operator is a [ternary operator](https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary)
+that leaves out the second operand (the return value if the condition evaluates to true) from the declaration, actually
+using the same evaluated expression. In other words, that means that if the first operand is true, it will return it.
+Otherwise, it will return the second one. Let’s see a quick example:
 
 ```php
 <?php
