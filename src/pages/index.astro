@@ -9,36 +9,18 @@ const allPosts = await getCollection("blog");
 
 <BaseLayout>
     <section id="about-me" class="section about-me">
-        <img
-            class="avatar"
-            src="img/avatar.svg"
-            alt="Fernando Paredes"
-            width="112"
-            height="112"
-        />
+        <InlineSvg svg="avatar" aria-label="Avatar of Fernando Paredes" />
         <h2>Hi There!</h2>
         <p>
-            I’m a Senior Software Engineer who has been building and maintaining
-            websites for longer than I want to admit. On this blog I cover
-            topics about PHP, JS, WordPress, Agile and a few other things!
+            I’m a Senior Software Engineer who has been building and maintaining websites for longer than I want to
+            admit. On this blog I cover topics about PHP, JS, WordPress, Agile and a few other things!
         </p>
         <div class="about-me-links">
-            <a class="about-me-more" href="#">More About Me</a>
             <div class="social-links">
-                <a
-                    href="https://twitter.com/ferparmur"
-                    title="Follow me on Twitter"
-                    target="_blank"
-                    rel="noopener"
-                >
+                <a href="https://twitter.com/ferparmur" title="Follow me on Twitter" target="_blank" rel="noopener">
                     <InlineSvg svg="twitter" aria-label="Twitter" />
                 </a>
-                <a
-                    href="https://github.com/ferparmur"
-                    title="Chek my repos on Github"
-                    target="_blank"
-                    rel="noopener"
-                >
+                <a href="https://github.com/ferparmur" title="Chek my repos on Github" target="_blank" rel="noopener">
                     <InlineSvg svg="github" aria-label="Github" />
                 </a>
                 <a
@@ -87,33 +69,19 @@ const allPosts = await getCollection("blog");
     <section id="contact" class="section contact">
         <h2>Contact</h2>
         <p class="contact-text">
-            If you want to send me a message, feel free to use the form below.
-            You can also drop me a message on Twitter (<a href="#"
-                >@f_paredesmur</a
-            >) or Linkedin (<a href="#">fernando-paredes-murillo</a>).
+            If you want to send me a message, feel free to use the form below. You can also drop me a message on Twitter
+            (<a href="#">@f_paredesmur</a>) or Linkedin (<a href="#">fernando-paredes-murillo</a>).
         </p>
 
         <form id="contact-form">
             <div class="form-group">
                 <label for="user-name">Name</label>
-                <input
-                    type="text"
-                    id="user-name"
-                    name="user-name"
-                    placeholder="Name"
-                    required
-                />
+                <input type="text" id="user-name" name="user-name" placeholder="Name" required />
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                />
+                <input type="email" id="email" name="email" placeholder="Email" required />
             </div>
 
             <div class="form-group">
@@ -137,9 +105,7 @@ const allPosts = await getCollection("blog");
             >
             </div>
 
-            <button class="submit-button" type="submit" data-action="submit"
-                >Send
-            </button>
+            <button class="submit-button" type="submit" data-action="submit">Send </button>
 
             <div class="message-holder"></div>
         </form>
