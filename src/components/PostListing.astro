@@ -8,9 +8,7 @@ const { url, title, pubDate, tags } = Astro.props;
         <article>
             <h3>{title}</h3>
             <p class="article-meta">
-                <time datetime={dateFormat(pubDate, "yyyy-mm-dd")}
-                    >{dateFormat(pubDate, "d mmmm yyyy")}</time
-                >
+                <time datetime={dateFormat(pubDate, "yyyy-mm-dd")}>{dateFormat(pubDate, "d mmmm yyyy")}</time>
                 / {tags?.map((tag: string): string => `#${tag}`)}
             </p>
         </article>
