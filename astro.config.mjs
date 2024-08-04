@@ -7,6 +7,9 @@ export default defineConfig({
     integrations: [mdx()],
     site: 'https://www.fparedes.com',
     markdown: {
-        syntaxHighlight: 'false',
+        syntaxHighlight: 'shiki',
+        shikiConfig: {
+            theme: 'dracula-soft',
+        },
     },
 })
