@@ -1,20 +1,19 @@
-// Import utilities from `astro:content`
 import {defineCollection, z} from "astro:content";
-// Define a `type` and `schema` for each collection
+
 const blogCollection = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({image}) => z.object({
         title: z.string(),
         pubDate: z.date(),
         author: z.string(),
-        image: z.object({
-            url: z.string(),
-            alt: z.string()
+        coverImage: image().refine((img) => img.width >= 1080, {
+            message: "Cover image must be at least 1080 pixels wide!",
         }),
+        coverImageAlt: z.string(),
         tags: z.array(z.string())
-    })
+    }),
 });
-// Export a single `collections` object to register your collection(s)
+
 export const collections = {
-    posts: blogCollection,
+    blog: blogCollection,
 };

@@ -1,13 +1,13 @@
 ---
 import dateFormat from 'dateformat';
-import { Picture } from 'astro:assets';
+import { Picture, Image } from 'astro:assets';
 
 import '../styles/post.scss'
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const {title, pubDate, tags, minutes} = Astro.props;
+const {title, pubDate, tags, minutes, coverImage, coverImageAlt} = Astro.props;
 ---
 
 <!doctype html>
@@ -36,13 +36,13 @@ const {title, pubDate, tags, minutes} = Astro.props;
 
             <div class="featured-image-container">
                 <div class="featured-image-bg" style="background:greenyellow"></div>
-                <!--<Picture-->
-                <!--        src={} alt="Fernando Paredes"-->
-                <!--        loading="eager"-->
-                <!--        widths={[280, 360, 390, 700, 768, 900]}-->
-                <!--        sizes="(max-width:280px) 260px,(max-width:360px) 360px,(max-width:390px) 360px,(max-width:700px) 700px,(max-width:768px) 768px,900px"-->
-                <!--        formats={['avif', 'webp']}-->
-                <!--/>-->
+                <Picture
+                        src={coverImage} alt={coverImageAlt}
+                        loading="eager"
+                        widths={[280, 360, 390, 700, 768, 900]}
+                        sizes="(max-width:280px) 260px,(max-width:360px) 360px,(max-width:390px) 360px,(max-width:700px) 700px,(max-width:768px) 768px,900px"
+                        formats={['avif', 'webp']}
+                />
             </div>
 
             <div class="container post-content">

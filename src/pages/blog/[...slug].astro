@@ -5,9 +5,11 @@ import readingTime from 'reading-time';
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection('blog');
-    return blogEntries.map(entry => ({
-        params: {slug: entry.slug}, props: {entry},
-    }));
+    return blogEntries.map(entry => {
+        return {
+            params: {slug: entry.slug}, props: {entry},
+        }
+    });
 }
 
 const {entry} = Astro.props;
@@ -21,6 +23,8 @@ const minutes = Math.max(Math.round(readingTime(entry.body).minutes), 1);
         pubDate={entry.data.pubDate}
         tags={entry.data.tags}
         minutes={minutes}
+        coverImage={entry.data.coverImage}
+        coverImageAlt={entry.data.coverImageAlt}
 >
     <Content/>
 </PostLayout>
