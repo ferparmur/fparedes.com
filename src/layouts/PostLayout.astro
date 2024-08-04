@@ -1,6 +1,6 @@
 ---
 import dateFormat from 'dateformat';
-import { Picture, Image } from 'astro:assets';
+import { getImage, Picture } from 'astro:assets';
 
 import '../styles/post.scss'
 import Head from "../components/Head.astro";
@@ -8,6 +8,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const {title, pubDate, tags, minutes, coverImage, coverImageAlt} = Astro.props;
+const coverBg = await getImage({src: coverImage, format: 'webp', width: 280, quality: 1});
 ---
 
 <!doctype html>
@@ -35,7 +36,7 @@ const {title, pubDate, tags, minutes, coverImage, coverImageAlt} = Astro.props;
             </div>
 
             <div class="featured-image-container">
-                <div class="featured-image-bg" style="background:greenyellow"></div>
+                <div class="featured-image-bg" style={`background-image: url(${coverBg.src})`}></div>
                 <Picture
                         src={coverImage} alt={coverImageAlt}
                         loading="eager"
