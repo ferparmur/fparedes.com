@@ -7,13 +7,23 @@ import { parse } from "node-html-parser";
 
 export interface Props {
     svg: string;
+    [key: string]: any;
+}
+
+interface SVGAttributes {
+    [key: string]: string | undefined;
 }
 
 async function getSVG(name: string) {
     const file = await import(`../svg/${name}.svg?raw`);
     const root = parse(file.default);
     const svg = root.querySelector("svg");
-    const { attributes, innerHTML } = svg;
+    if (!svg) {
+        throw new Error("SVG not found");
+    }
+
+    const attributes: SVGAttributes = svg.attributes;
+    const innerHTML: string = svg.innerHTML;
     return {
         attributes,
         innerHTML,
@@ -22,11 +32,13 @@ async function getSVG(name: string) {
 
 const { svg, ...attributes } = Astro.props as Props;
 const { attributes: baseAttributes, innerHTML } = await getSVG(svg);
+
+// Ensure attributes and baseAttributes are of type SVGAttributes
 if (attributes["aria-label"] && baseAttributes["aria-hidden"]) {
     delete baseAttributes["aria-hidden"];
 }
 
-const svgAttributes = { ...baseAttributes, ...attributes };
+const svgAttributes = { ...baseAttributes, ...attributes } as SVGAttributes;
 ---
 
 <svg {...svgAttributes} set:html={innerHTML} />
