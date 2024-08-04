@@ -1,0 +1,69 @@
+---
+title: "Change Column Order in WordPress"
+pubDate: 2019-05-20
+author: "Fernando Paredes"
+coverImage: "./img/columns.jpg"
+coverImageAlt: "Ancient Greek Columns"
+tags: ["WordPress"]
+seo:
+    description: "When adding a column in the WordPress Editor, it goes to the last position and there's no obvious way to change that order. We show you how to solve that!"
+---
+
+Using the `manage_posts_columns` or `manage_$post_type_posts_columns` filter seems simple enough, right? But after
+you do something like the suggested example from the [Codex](https://developer.wordpress.org/reference/hooks/manage_posts_columns/),
+you discover that it doesn't allow you to change the default column order in the WordPress editor screen.
+
+```php
+function add_sticky_column( array $columns ) : array {
+    $columns['sticky'] = __('Sticky');
+    return $columns;
+}
+add_filter( 'manage_posts_columns' , 'add_sticky_column' );
+```
+
+You’ll find out that adding it to the array this way leaves it in the last position.
+
+## The Problem with Internet Answers
+Many answers in StackOverflow and some tutorial sites suggest you to loop via `foreach()` through the `$columns` array.
+But you probably think that something like that increases the complexity of your code without a good reason. And you
+are right. So how to solve this in an elegant, efficient way?
+
+## Splitting the Array: the Problem with the Intuitive Solution to Change the Order of Columns in WordPress
+It’s actually very simple. You may think about using the `array_splice()` function to insert it at a specific index,
+but this is not the best approach. For example, to insert the column at the index #3 in the array, you would do:
+
+```php
+function add_sticky_column( array $columns ) : array {
+    $new_columns[ 'sticky' => __('Sticky') ];
+    array_splice( $columns, 2, 0, $new_columns );
+    return $columns;
+}
+add_filter( 'manage_posts_columns' , 'add_sticky_column' );
+```
+
+While this looks fine, the problem is that `array_splice()` resets the array keys from `$new_columns`. This is very
+inconvenient since that very key is what generates the column id and class. More importantly, you need that key to
+insert content in the column cells with `manage_posts_custom_column`.
+
+## Splitting the Array the Right Way
+In order to preserve it, there’s an easy solution: break the `$columns` array in two and insert the new one in
+between taking advantage of [the union (+) operator](https://www.php.net/manual/en/language.operators.array.php):
+
+```php
+function add_sticky_column( array $columns ) : array {
+    $new_columns[ 'sticky' => __('Sticky') ];
+    $columns = array_slice( $columns, 0, 2, true )
+        + $new_columns
+        + array_slice( $columns, 2, 0, null, true);
+    return $columns;
+}
+add_filter( 'manage_posts_columns' , 'add_sticky_column' );
+```
+
+## In conclusion:
+- `array_slice()` allows you to break the original array in two at a specific point
+- Thus, you can modify the order of your custom columns in the post editor.
+- This way avoids increasing the complexity of your code with an unnecessary `foreach()` loop.
+- It also preserves the array keys, while `array_splice()` doesn't, which is crucial to preserve the identity of the
+column
+- This way, you can easily change the order of your column in the WordPress editor.
