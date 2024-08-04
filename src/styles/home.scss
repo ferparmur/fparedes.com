@@ -40,7 +40,7 @@ section {
 
 /* 📄 Blog */
 .blog-articles {
-  margin: 0 0 0 0;
+  margin: 0;
   padding: 0;
 
   li {
@@ -166,7 +166,7 @@ section {
 }
 
 .course-info h3 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 .course-meta {
@@ -218,14 +218,13 @@ section {
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
       -webkit-text-fill-color: var(--text-color);
-      -webkit-box-shadow: 0 0 0 1000px var(--bg-color) inset;
+      box-shadow: 0 0 0 1000px var(--bg-color) inset;
       font-size: 0.89rem;
     }
 
     &:-webkit-autofill:focus {
-      -webkit-box-shadow:
-        0 0 0 0.2rem var(--blue),
-        0 0 0 1000px var(--bg-color) inset;
+      box-shadow: 0 0 0 0.2rem var(--blue),
+      0 0 0 1000px var(--bg-color) inset;
     }
 
     &:focus {
@@ -241,7 +240,7 @@ section {
   .grow-wrap {
     resize: none;
     overflow: hidden;
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     transition: 0.2s;
     line-height: 1.7;
   }
@@ -295,7 +294,7 @@ section {
   transform-origin: 0;
   margin: 0.9rem 0;
 
-  @media all and (min-width: 360px) {
+  @media all and (width >= 360px) {
     transform: none;
     margin: 1.7rem 0;
   }
@@ -309,18 +308,20 @@ section {
 
 .loading {
   background: repeating-linear-gradient(
-    -55deg,
-    var(--bg-color),
-    var(--bg-color) 10px,
-    var(--bg-color-soft) 10px,
-    var(--bg-color-soft) 20px
+      -55deg,
+      var(--bg-color),
+      var(--bg-color) 10px,
+      var(--bg-color-soft) 10px,
+      var(--bg-color-soft) 20px
   );
   background-size: 49px;
-  animation: loadingAnimation 2s linear infinite;
-  @keyframes loadingAnimation {
+  animation: loading-animation 2s linear infinite;
+
+  @keyframes loading-animation {
     0% {
       background-position: 0 0;
     }
+
     100% {
       background-position: 49px 0;
     }

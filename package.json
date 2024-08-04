@@ -20,7 +20,12 @@
     },
     "devDependencies": {
         "@types/dateformat": "^5.0.2",
+        "postcss-html": "^1.7.0",
         "prettier": "^3.3.3",
-        "prettier-plugin-astro": "^0.14.1"
+        "prettier-plugin-astro": "^0.14.1",
+        "stylelint": "^16.8.1",
+        "stylelint-config-html": "^1.1.0",
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-config-standard-scss": "^13.1.0"
     }
 }

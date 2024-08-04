@@ -45,7 +45,7 @@
   text-transform: lowercase;
   color: var(--text-color-soft);
 
-  &:before {
+  &::before {
     content: "<";
     font-weight: 700;
     font-size: 30px;

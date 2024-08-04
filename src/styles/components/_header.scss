@@ -32,7 +32,7 @@
     font-size: 1rem;
     margin-right: 1ch;
 
-    &:after {
+    &::after {
       content: "/";
       margin-left: 1ch;
       color: var(--text-color-softer);
@@ -40,7 +40,8 @@
 
     &:last-child {
       margin-right: 0;
-      &:after {
+
+      &::after {
         content: "";
         margin-left: 0;
       }

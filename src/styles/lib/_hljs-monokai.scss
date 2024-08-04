@@ -7,6 +7,8 @@
   - https://github.com/highlightjs/base16-highlightjs
 */
 
+/* stylelint-disable */
+
 /*
 base00  #272822  Default Background
 base01  #383830  Lighter Background (Used for status bars, line number and folding marks)
@@ -141,6 +143,7 @@ code.hljs {
 .hljs-keyword {
   color: #ae81ff;
 }
+
 .hljs-emphasis {
   color: #ae81ff;
   font-style: italic;
@@ -154,7 +157,7 @@ code.hljs {
   */
 .hljs-meta .hljs-keyword,
 .hljs-meta .hljs-string {
-  color: #cc6633;
+  color: #c63;
 }
 
 .hljs-meta .hljs-keyword,

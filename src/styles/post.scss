@@ -25,6 +25,7 @@
 
   .featured-image-bg {
     $blur: 30px;
+
     position: absolute;
     background-position: center;
     background-size: cover;
@@ -129,7 +130,7 @@
     font-size: 0.88rem;
     margin: 2rem 0;
 
-    @media all and (min-width: 750px) {
+    @media all and (width >= 750px) {
       margin: 2rem -1.5rem;
     }
 
@@ -145,7 +146,7 @@
           content: counter(line-number);
           width: 3ch;
           display: inline-block;
-          padding: 0 0.5em 0 0.5em;
+          padding: 0 0.5em;
           text-align: right;
           margin: 0 1ch 0 0;
           background-color: var(--bg-color-soft);
@@ -173,11 +174,13 @@
 figure {
   margin: 0;
 }
+
 .alignleft,
 .alignright {
   max-width: 50%;
   margin: 0.5em 0;
 }
+
 .alignleft {
   float: left;
   margin-right: 1.5em;
@@ -190,7 +193,7 @@ figure {
 
 /* Embeds */
 .wp-block-embed {
-  @media all and (min-width: 750px) {
+  @media all and (width >= 750px) {
     margin: 1rem -1.5rem;
   }
 }
@@ -218,7 +221,7 @@ figure {
   color: var(--text-color-soft);
   background-color: var(--bg-color-soft);
   border-top: 1px solid var(--text-color-softer);
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .has-background {
@@ -227,10 +230,11 @@ figure {
   font-size: 1.1em;
   line-height: 1.4;
 
-  @media all and (min-width: 750px) {
+  @media all and (width >= 750px) {
     margin: 2rem -1.5rem;
   }
 }
+
 .has-yellow-background-color {
   background-color: var(--yellow);
   color: var(--bg-color);
