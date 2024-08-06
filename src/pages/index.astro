@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PostListing from "../components/PostListing.astro";
 import InlineSvg from "../components/InlineSvg.astro";
 const allPosts = await getCollection("blog");
+allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
 ---
 
 <BaseLayout>
@@ -24,7 +25,7 @@ const allPosts = await getCollection("blog");
                     <InlineSvg svg="github" aria-label="Github" />
                 </a>
                 <a
-                    href="https://www.linkedin.com/in/fernando-paredes-murillo/"
+                    href="https://www.linkedin.com/in/fernandoparedes/"
                     title="Connect with me on Linkedin"
                     target="_blank"
                     rel="noopener"
@@ -105,7 +106,7 @@ const allPosts = await getCollection("blog");
             >
             </div>
 
-            <button class="submit-button" type="submit" data-action="submit">Send </button>
+            <button class="submit-button" type="submit" data-action="submit">Send</button>
 
             <div class="message-holder"></div>
         </form>
