@@ -14,4 +14,7 @@ export default defineConfig({
             theme: 'dracula-soft',
         },
     },
+    redirects: {
+        '/wczgz2020': '/talks/2020/limpia-tu-codigo',
+    },
 })
