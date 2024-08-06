@@ -4,11 +4,19 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostListing from "../components/PostListing.astro";
 import InlineSvg from "../components/InlineSvg.astro";
+import dateFormat from "dateformat";
 const allPosts = await getCollection("blog");
 allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
 
 const allTalks = await getCollection("talks");
-allTalks.sort((talk1, talk2) => talk2.data.pubDate.getTime() - talk1.data.pubDate.getTime());
+const talksByYear = allTalks.reduce((acc, talk) => {
+    const year = talk.data.pubDate.getFullYear();
+    if (!acc[year]) {
+        acc[year] = [];
+    }
+    acc[year].push(talk);
+    return acc;
+}, {});
 ---
 
 <BaseLayout>
@@ -67,13 +75,29 @@ allTalks.sort((talk1, talk2) => talk2.data.pubDate.getTime() - talk1.data.pubDat
 
     <section id="talks" class="section talks">
         <h2>Talks</h2>
-        <ul class="talks-years">TALKS</ul>
-
-        <ul>
+        <ul class="talks-years">
             {
-                allTalks.map((talk) => (
+                Object.keys(talksByYear).map((year) => (
                     <li>
-                        <a href={`/talks/${talk.slug}/`}>{talk.data.title}</a>
+                        <h3>{year}</h3>
+                        <ul class="talks-list">
+                            {talksByYear[year].map((talk) => (
+                                <li>
+                                    <a href={`/talks/${talk.data.pubDate.getFullYear()}/${talk.slug}`}>
+                                        <article>
+                                            <p class="talk-meta">
+                                                <time datetime={dateFormat(talk.data.pubDate, "yyyy-mm-dd")}>
+                                                    {dateFormat(talk.data.pubDate, "d mmmm yyyy")}
+                                                </time>
+                                                &nbsp;/ WordCamp Zaragoza
+                                            </p>
+
+                                            <h4 class="talk-title">{talk.data.title}</h4>
+                                        </article>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </li>
                 ))
             }

@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     const talks = await getCollection("talks");
     return talks.map((entry) => {
         return {
-            params: { slug: entry.slug },
+            params: { slug: `${entry.data.pubDate.getFullYear()}/${entry.slug}` },
             props: { entry },
         };
     });
