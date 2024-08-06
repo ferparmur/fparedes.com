@@ -6,6 +6,9 @@ import PostListing from "../components/PostListing.astro";
 import InlineSvg from "../components/InlineSvg.astro";
 const allPosts = await getCollection("blog");
 allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
+
+const allTalks = await getCollection("talks");
+allTalks.sort((talk1, talk2) => talk2.data.pubDate.getTime() - talk1.data.pubDate.getTime());
 ---
 
 <BaseLayout>
@@ -65,6 +68,16 @@ allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDat
     <section id="talks" class="section talks">
         <h2>Talks</h2>
         <ul class="talks-years">TALKS</ul>
+
+        <ul>
+            {
+                allTalks.map((talk) => (
+                    <li>
+                        <a href={`/talks/${talk.slug}/`}>{talk.data.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
     </section>
 
     <section id="contact" class="section contact">

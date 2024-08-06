@@ -18,6 +18,21 @@ const blogCollection = defineCollection({
         }),
 });
 
+const talksCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            pubDate: z.date(),
+            author: z.string(),
+            location: z.string(),
+            seo: z.object({
+                description: z.string(),
+            }),
+        }),
+});
+
 export const collections = {
     blog: blogCollection,
+    talks: talksCollection,
 };

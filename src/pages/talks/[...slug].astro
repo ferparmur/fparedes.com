@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+import readingTime from "reading-time";
+
+export async function getStaticPaths() {
+    const talks = await getCollection("talks");
+    return talks.map((entry) => {
+        return {
+            params: { slug: entry.slug },
+            props: { entry },
+        };
+    });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<h1>{entry.data.title}</h1>
+<Content />
