@@ -1,0 +1,44 @@
+---
+import dateFormat from "dateformat";
+import { SEO } from "astro-seo";
+
+import "../styles/post.scss";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, pubDate, location, seo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Head />
+
+        <SEO {...seo} />
+
+        <title>{title}</title>
+    </head>
+    <body>
+        <Header />
+
+        <main class="section talks">
+            <article>
+                <div class="container">
+                    <h1>{title}</h1>
+
+                    <p class="article-meta">
+                        <time datetime={dateFormat(pubDate, "yyyy-mm-dd")}>{dateFormat(pubDate, "d mmmm yyyy")}</time>
+                        / {location}
+                    </p>
+                </div>
+
+                <div class="container post-content">
+                    <slot />
+                </div>
+            </article>
+        </main>
+
+        <Footer />
+    </body>
+</html>
