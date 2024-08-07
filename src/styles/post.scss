@@ -187,25 +187,10 @@ figure {
 }
 
 /* Embeds */
-.wp-block-embed {
-  @media all and (width >= 750px) {
-    margin: 1rem -1.5rem;
-  }
-}
-
-.wp-has-aspect-ratio {
-  position: relative;
-
-  .wp-block-embed__wrapper, //stylelint-disable-line
-  iframe {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.wp-embed-aspect-16-9 {
+.embed {
   aspect-ratio: 16/9;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 /* 📙 Gutenberg */
