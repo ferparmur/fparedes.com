@@ -1,0 +1,127 @@
+---
+const { title, coverImage, pubDate, description, wordCount, tags } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": `${Astro.site}#website`,
+            "url": `${Astro.site}`,
+            "name": "Fernando Paredes - Web Developer",
+            "description": "",
+            "publisher": {
+                "@id": `${Astro.site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`
+            },
+            "inLanguage": "en-US"
+        },
+        {
+            "@type": "ImageObject",
+            "@id": `${canonicalUrl}#primaryimage`,
+            "inLanguage": "en-US",
+            "url": coverImage.src,
+            "contentUrl": coverImage.src,
+            "width": coverImage.width,
+            "height": coverImage.height
+        },
+        {
+            "@type": "WebPage",
+            "@id": `${canonicalUrl}#webpage`,
+            "url": canonicalUrl,
+            "name": title,
+            "isPartOf": {
+                "@id": `${Astro.site}#website`
+            },
+            "primaryImageOfPage": {
+                "@id": `${canonicalUrl}#primaryimage`
+            },
+            "datePublished": pubDate.toISOString(),
+            "dateModified": pubDate.toISOString(),
+            "description": description,
+            "breadcrumb": {
+                "@id": `${canonicalUrl}#breadcrumb`
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+                {
+                    "@type": "ReadAction",
+                    "target": [
+                        canonicalUrl
+                    ]
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": `${canonicalUrl}#breadcrumb`,
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Blog",
+                    "item": `${Astro.site}blog/`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": title
+                }
+            ]
+        },
+        {
+            "@type": "Article",
+            "@id": `${canonicalUrl}#article`,
+            "isPartOf": {
+                "@id": `${canonicalUrl}#webpage`
+            },
+            "author": {
+                "@id": `${Astro.site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`
+            },
+            "headline": title,
+            "datePublished": pubDate.toISOString(),
+            "dateModified": pubDate.toISOString(),
+            "mainEntityOfPage": {
+                "@id": `${canonicalUrl}how-i-got-my-aws-cloud-practitioner-certification-in-3-days/#webpage`
+            },
+            "wordCount": wordCount,
+            "publisher": {
+                "@id": `${Astro.site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`
+            },
+            "image": {
+                "@id": `${canonicalUrl}#primaryimage`
+            },
+            "thumbnailUrl": coverImage.src,
+            "articleSection": tags,
+            "inLanguage": "en-US"
+        },
+        {
+            "@type": ["Person", "Organization"],
+            "@id": `${Astro.site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`,
+            "name": "Fernando Paredes Murillo",
+            "image": {
+                "@type": "ImageObject",
+                "@id": `${Astro.site}#personlogo`,
+                "inLanguage": "en-US",
+                "url": `${Astro.site}media/fernando-paredes.png`,
+                "contentUrl": `${Astro.site}media/fernando-paredes.png`,
+                "width": 512,
+                "height": 512,
+                "caption": "Fernando Paredes Murillo"
+            },
+            "logo": {
+                "@id": `${Astro.site}#personlogo`
+            },
+            "sameAs": [
+                Astro.site,
+                "https://www.linkedin.com/in/fernandoparedes/",
+                "https://twitter.com/ferparmur"
+            ],
+            "url": Astro.site
+        }
+    ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)}>
+</script>

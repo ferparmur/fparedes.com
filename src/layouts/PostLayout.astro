@@ -8,8 +8,9 @@ import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import InlineSvg from "../components/InlineSvg.astro";
+import PostSchema from "../components/PostSchema.astro";
 
-const { title, pubDate, tags, minutes, coverImage, coverImageAlt, seo } = Astro.props;
+const { title, pubDate, tags, minutes, coverImage, coverImageAlt, seo, wordCount } = Astro.props;
 
 const coverBg = await getImage({
     src: coverImage,
@@ -25,6 +26,15 @@ const coverBg = await getImage({
         <Head />
 
         <SEO {...seo} />
+
+        <PostSchema
+            title={title}
+            coverImage={coverImage}
+            pubDate={pubDate}
+            description={seo.description}
+            wordCount={wordCount}
+            tags={tags}
+        />
 
         <title>{title}</title>
     </head>

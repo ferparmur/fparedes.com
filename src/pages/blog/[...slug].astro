@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 import readingTime from "reading-time";
+import wordsCounter from "word-counting";
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection("blog");
@@ -16,6 +17,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
+const wordCount = wordsCounter(entry.body).wordsCount;
 const minutes = Math.max(Math.round(readingTime(entry.body).minutes), 1);
 ---
 
@@ -23,6 +25,7 @@ const minutes = Math.max(Math.round(readingTime(entry.body).minutes), 1);
     title={entry.data.title}
     pubDate={entry.data.pubDate}
     tags={entry.data.tags}
+    wordCount={wordCount}
     minutes={minutes}
     coverImage={entry.data.coverImage}
     coverImageAlt={entry.data.coverImageAlt}
