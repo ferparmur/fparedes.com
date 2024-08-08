@@ -20,7 +20,7 @@ const blogCollection = defineCollection({
 
 const talksCollection = defineCollection({
     type: "content",
-    schema: ({ image }) =>
+    schema: () =>
         z.object({
             title: z.string(),
             pubDate: z.date(),

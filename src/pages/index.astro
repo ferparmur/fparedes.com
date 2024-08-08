@@ -1,16 +1,21 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostListing from "../components/PostListing.astro";
 import InlineSvg from "../components/InlineSvg.astro";
 import dateFormat from "dateformat";
+
+type BlogPost = CollectionEntry<"blog">;
+type Talk = CollectionEntry<"talks">;
+
 const allPosts = await getCollection("blog");
 allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
 
 const allTalks = await getCollection("talks");
-const talksByYear = allTalks.reduce((acc, talk) => {
-    const year = talk.data.pubDate.getFullYear();
+const talksByYear: { [key: string]: Talk[] } = allTalks.reduce((acc: { [key: string]: Talk[] }, talk) => {
+    const year = talk.data.pubDate.getFullYear().toString();
     if (!acc[year]) {
         acc[year] = [];
     }
@@ -59,7 +64,7 @@ const talksByYear = allTalks.reduce((acc, talk) => {
         <h2>Blog</h2>
         <ul class="blog-articles">
             {
-                allPosts.map((post) => (
+                allPosts.map((post: BlogPost) => (
                     <PostListing
                         url={`/blog/${post.slug}/`}
                         title={post.data.title}
@@ -77,11 +82,11 @@ const talksByYear = allTalks.reduce((acc, talk) => {
         <h2>Talks</h2>
         <ul class="talks-years">
             {
-                Object.keys(talksByYear).map((year) => (
+                Object.keys(talksByYear).map((year: string) => (
                     <li>
                         <h3>{year}</h3>
                         <ul class="talks-list">
-                            {talksByYear[year].map((talk) => (
+                            {talksByYear[year].map((talk: Talk) => (
                                 <li>
                                     <a href={`/talks/${talk.data.pubDate.getFullYear()}/${talk.slug}`}>
                                         <article>
