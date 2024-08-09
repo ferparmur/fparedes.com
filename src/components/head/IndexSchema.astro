@@ -1,34 +1,13 @@
 ---
+import person from "../../data/schema/person.js";
+
 const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        {
-            "@type": ["Person", "Organization"],
-            "@id": `${Astro.site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`,
-            "name": "Fernando Paredes Murillo",
-            "image": {
-                "@type": "ImageObject",
-                "@id": `${Astro.site}#personlogo`,
-                "inLanguage": "en-US",
-                "url": `${Astro.site}media/fernando-paredes.png`,
-                "contentUrl": `${Astro.site}media/fernando-paredes.png`,
-                "width": 512,
-                "height": 512,
-                "caption": "Fernando Paredes Murillo"
-            },
-            "logo": {
-                "@id": `${Astro.site}#personlogo`
-            },
-            "sameAs": [
-                Astro.site,
-                "https://www.linkedin.com/in/fernandoparedes/",
-                "https://twitter.com/ferparmur"
-            ],
-            "url": Astro.site
-        },
+        person(Astro.site.href),
         {
             "@type": "WebSite",
             "@id": `${Astro.site}#website`,
