@@ -3,12 +3,17 @@ import "../styles/home.scss";
 import Head from "../components/head/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import IndexSchema from "../components/head/IndexSchema.astro";
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
         <Head title="Fernando Paredes - Web Developer" />
+        <IndexSchema
+            title="Fernando Paredes - Web Developer"
+            description="I'm a Senior Software Engineer who has been building and maintaining websites for longer than I want to admit. On this blog I cover topics about PHP, JS, WordPress, Agile and a few other things!"
+        />
     </head>
     <body>
         <Header />
