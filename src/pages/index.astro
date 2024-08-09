@@ -1,119 +1,14 @@
 ---
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PostListing from "../components/PostListing.astro";
-import InlineSvg from "../components/InlineSvg.astro";
-import dateFormat from "dateformat";
-
-type BlogPost = CollectionEntry<"blog">;
-type Talk = CollectionEntry<"talks">;
-
-const allPosts = await getCollection("blog");
-allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
-
-const allTalks = await getCollection("talks");
-const talksByYear: { [key: string]: Talk[] } = allTalks.reduce((acc: { [key: string]: Talk[] }, talk) => {
-    const year = talk.data.pubDate.getFullYear().toString();
-    if (!acc[year]) {
-        acc[year] = [];
-    }
-    acc[year].push(talk);
-    return acc;
-}, {});
+import AboutMe from "../components/home/AboutMe.astro";
+import HomeBlog from "../components/home/HomeBlog.astro";
+import HomeTalks from "../components/home/HomeTalks.astro";
+import Contact from "../components/home/Contact.astro";
 ---
 
 <BaseLayout>
-    <section id="about-me" class="section about-me">
-        <InlineSvg svg="avatar" aria-label="Avatar of Fernando Paredes" />
-        <h2>Hi There!</h2>
-        <p>
-            I’m a Senior Software Engineer who has been building and maintaining websites for longer than I want to
-            admit. On this blog I cover topics about PHP, JS, WordPress, Agile and a few other things!
-        </p>
-        <div class="about-me-links">
-            <div class="social-links">
-                <a href="https://twitter.com/ferparmur" title="Follow me on Twitter" target="_blank" rel="noopener">
-                    <InlineSvg svg="twitter" aria-label="Twitter" />
-                </a>
-                <a href="https://github.com/ferparmur" title="Chek my repos on Github" target="_blank" rel="noopener">
-                    <InlineSvg svg="github" aria-label="Github" />
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/fernandoparedes/"
-                    title="Connect with me on Linkedin"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <InlineSvg svg="linkedin" aria-label="Linkedin" />
-                </a>
-                <a
-                    href="https://unsplash.com/@ferparmur"
-                    title="See my photos on Unsplash"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <InlineSvg svg="unsplash" aria-label="Unsplash" />
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="section blog">
-        <h2>Blog</h2>
-        <ul class="blog-articles">
-            {
-                allPosts.map((post: BlogPost) => (
-                    <PostListing
-                        url={`/blog/${post.slug}/`}
-                        title={post.data.title}
-                        pubDate={post.data.pubDate}
-                        tags={post.data.tags}
-                    />
-                ))
-            }
-        </ul>
-
-        <a class="blog-more" href="/blog">More Blog Posts</a>
-    </section>
-
-    <section id="talks" class="section talks">
-        <h2>Talks</h2>
-        <ul class="talks-years">
-            {
-                Object.keys(talksByYear).map((year: string) => (
-                    <li>
-                        <h3>{year}</h3>
-                        <ul class="talks-list">
-                            {talksByYear[year].map((talk: Talk) => (
-                                <li>
-                                    <a href={`/talks/${talk.data.pubDate.getFullYear()}/${talk.slug}`}>
-                                        <article>
-                                            <p class="talk-meta">
-                                                <time datetime={dateFormat(talk.data.pubDate, "yyyy-mm-dd")}>
-                                                    {dateFormat(talk.data.pubDate, "d mmmm yyyy")}
-                                                </time>
-                                                &nbsp;/ WordCamp Zaragoza
-                                            </p>
-
-                                            <h4 class="talk-title">{talk.data.title}</h4>
-                                        </article>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
-                ))
-            }
-        </ul>
-    </section>
-
-    <section id="contact" class="section contact">
-        <h2>Contact</h2>
-        <p>
-            If you want to send me a message, feel free to drop me a message on Twitter (<a href="#">@f_paredesmur</a>)
-            or Linkedin (<a href="#">fernandoparedes</a>).
-        </p>
-    </section>
+    <AboutMe />
+    <HomeBlog />
+    <HomeTalks />
+    <Contact />
 </BaseLayout>

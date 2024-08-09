@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import dateFormat from "dateformat";
+
+import type { CollectionEntry } from "astro:content";
+type Talk = CollectionEntry<"talks">;
+
+const allTalks = await getCollection("talks");
+const talksByYear: { [key: string]: Talk[] } = allTalks.reduce((acc: { [key: string]: Talk[] }, talk) => {
+    const year = talk.data.pubDate.getFullYear().toString();
+    if (!acc[year]) {
+        acc[year] = [];
+    }
+    acc[year].push(talk);
+    return acc;
+}, {});
+---
+
+<section id="talks" class="section talks">
+    <h2>Talks</h2>
+    <ul class="talks-years">
+        {
+            Object.keys(talksByYear).map((year: string) => (
+                <li>
+                    <h3>{year}</h3>
+                    <ul class="talks-list">
+                        {talksByYear[year].map((talk: Talk) => (
+                            <li>
+                                <a href={`/talks/${talk.data.pubDate.getFullYear()}/${talk.slug}`}>
+                                    <article>
+                                        <p class="talk-meta">
+                                            <time datetime={dateFormat(talk.data.pubDate, "yyyy-mm-dd")}>
+                                                {dateFormat(talk.data.pubDate, "d mmmm yyyy")}
+                                            </time>
+                                            &nbsp;/ WordCamp Zaragoza
+                                        </p>
+
+                                        <h4 class="talk-title">{talk.data.title}</h4>
+                                    </article>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            ))
+        }
+    </ul>
+</section>
