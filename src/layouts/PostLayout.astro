@@ -4,11 +4,11 @@ import { getImage, Picture } from "astro:assets";
 import { SEO } from "astro-seo";
 
 import "../styles/post.scss";
-import Head from "../components/Head.astro";
+import Head from "../components/head/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import InlineSvg from "../components/InlineSvg.astro";
-import PostSchema from "../components/PostSchema.astro";
+import PostSchema from "../components/head/PostSchema.astro";
 
 const { title, pubDate, tags, minutes, coverImage, coverImageAlt, seo, wordCount } = Astro.props;
 
