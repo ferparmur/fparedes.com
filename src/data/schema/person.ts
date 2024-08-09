@@ -1,4 +1,4 @@
-const person = (site) => {
+const person = (site: string) => {
     return {
         "@type": ["Person", "Organization"],
         "@id": `${site}#/schema/person/8b0de6231c6bc0b6d90c3aa271e3ad02`,
