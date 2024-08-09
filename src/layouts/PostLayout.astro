@@ -23,7 +23,7 @@ const coverBg = await getImage({
 <!doctype html>
 <html lang="en">
     <head>
-        <Head />
+        <Head title={title} />
 
         <SEO {...seo} />
 
@@ -35,8 +35,6 @@ const coverBg = await getImage({
             wordCount={wordCount}
             tags={tags}
         />
-
-        <title>{title}</title>
     </head>
     <body>
         <Header />
