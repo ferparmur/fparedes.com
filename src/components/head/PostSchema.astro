@@ -3,12 +3,13 @@ import person from "../../data/schema/person";
 import website from "../../data/schema/website";
 
 const { title, coverImage, pubDate, description, wordCount, tags } = Astro.props;
+const siteUrl = Astro.site?.href || "";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        website(Astro.site.href),
+        website(siteUrl),
         {
             "@type": "ImageObject",
             "@id": `${canonicalUrl}#primaryimage`,
@@ -88,7 +89,7 @@ const schema = {
             "articleSection": tags,
             "inLanguage": "en-US"
         },
-        person(Astro.site.href)
+        person(siteUrl)
     ]
 };
 ---

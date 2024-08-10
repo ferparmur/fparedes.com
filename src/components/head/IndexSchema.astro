@@ -4,38 +4,39 @@ import website from "../../data/schema/website";
 import breadcrumbList from "../../data/schema/breadcrumbList";
 
 const { title, description } = Astro.props;
+const siteUrl = Astro.site?.href || "";
 
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        person(Astro.site.href),
-        website(Astro.site.href),
+        person(siteUrl),
+        website(siteUrl),
         {
             "@type": "CollectionPage",
-            "@id": `${Astro.site}#webpage`,
-            "url": Astro.site,
+            "@id": `${siteUrl}#webpage`,
+            "url": siteUrl,
             "name": title,
             "isPartOf": {
-                "@id": `${Astro.site}/#website`
+                "@id": `${siteUrl}/#website`
             },
             "description": description,
             "breadcrumb": {
-                "@id": `${Astro.site}/#breadcrumb`
+                "@id": `${siteUrl}/#breadcrumb`
             },
             "inLanguage": "en-US",
             "potentialAction": [
                 {
                     "@type": "ReadAction",
                     "target": [
-                        Astro.site
+                        siteUrl
                     ]
                 }
             ]
         },
-        breadcrumbList(Astro.site.href, [
+        breadcrumbList(siteUrl, [
             {
                 "name": "Home",
-                "item": Astro.site.href
+                "item": siteUrl
             },
             {
                 "name": "Home"
