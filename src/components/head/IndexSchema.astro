@@ -1,6 +1,7 @@
 ---
 import person from "../../data/schema/person";
 import website from "../../data/schema/website";
+import breadcrumbList from "../../data/schema/breadcrumbList";
 
 const { title, description } = Astro.props;
 
@@ -31,23 +32,15 @@ const schema = {
                 }
             ]
         },
-        {
-            "@type": "BreadcrumbList",
-            "@id": `${Astro.site}/#breadcrumb`,
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": Astro.site
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Home"
-                }
-            ]
-        }
+        breadcrumbList(Astro.site.href, [
+            {
+                "name": "Home",
+                "item": Astro.site.href
+            },
+            {
+                "name": "Home"
+            }
+        ])
     ]
 };
 ---
