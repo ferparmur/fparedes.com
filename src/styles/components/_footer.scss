@@ -27,6 +27,11 @@
 
 .copyright-notice {
   margin: 0 0 0.5rem;
+
+  a {
+    color: var(--text-color);
+    text-decoration: underline dotted var(--text-color-soft);
+  }
 }
 
 .extra-credit {
