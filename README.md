@@ -13,7 +13,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## License
+## ⚖️️License
 The contents of the site itself (.md and .mdx files in this repository) are licensed under the [Creative Commons
 Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license, and
 the underlying source code used to format and display that content is licensed under the
