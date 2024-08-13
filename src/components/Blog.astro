@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import PostListing from "./PostListing.astro";
+
+const { entries } = Astro.props;
+
+import type { CollectionEntry } from "astro:content";
+type BlogPost = CollectionEntry<"blog">;
+
+const allPosts = await getCollection("blog");
+allPosts.sort((post1, post2) => post2.data.pubDate.getTime() - post1.data.pubDate.getTime());
+
+if (typeof entries === "number" && entries > -1) {
+    allPosts.splice(entries);
+}
+---
+
+<ul class="blog-articles">
+    {
+        allPosts.map((post: BlogPost) => (
+            <PostListing
+                url={`/blog/${post.slug}/`}
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+            />
+        ))
+    }
+</ul>
