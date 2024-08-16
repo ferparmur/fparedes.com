@@ -42,7 +42,7 @@ const coverBg = await getImage({
         <main class="section blog">
             <article>
                 <div class="container">
-                    <h1>{title}</h1>
+                    <h1 style={`view-transition-name: ${title.replace(/\W/g, "").toLowerCase()}`}>{title}</h1>
 
                     <p class="article-meta">
                         <time datetime={dateFormat(pubDate, "yyyy-mm-dd")}>{dateFormat(pubDate, "d mmmm yyyy")}</time>

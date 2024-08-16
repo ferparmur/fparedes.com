@@ -35,7 +35,12 @@ const talksByYear: { [key: string]: Talk[] } = allTalks.reduce((acc: { [key: str
                                             &nbsp;/ WordCamp Zaragoza
                                         </p>
 
-                                        <h4 class="talk-title">{talk.data.title}</h4>
+                                        <h4
+                                            style={`view-transition-name: ${talk.data.title.replace(/\W/g, "").toLowerCase()}`}
+                                            class="talk-title"
+                                        >
+                                            {talk.data.title}
+                                        </h4>
                                     </article>
                                 </a>
                             </li>
