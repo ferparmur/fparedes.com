@@ -15,6 +15,6 @@ export default defineConfig({
         }
     },
     redirects: {
-        "/wczgz2020": "/talks/2020/limpia-tu-codigo"
+        "/wczgz2020": "/talks/2020/limpia-tu-codigo-principios-basicos-para-no-odiarte-a-ti-mismo-in-spanish"
     }
 });
