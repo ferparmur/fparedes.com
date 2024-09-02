@@ -15,6 +15,7 @@ export default defineConfig({
         }
     },
     redirects: {
+        "/sitemap.xml": "/sitemap-index.html",
         "/wczgz2020": "/talks/2020/limpia-tu-codigo-principios-basicos-para-no-odiarte-a-ti-mismo-in-spanish",
         "/blog/the-game-of-thrones-retrospective-no-spoilers": "/blog/the-game-of-thrones-retrospective",
         "/php-barcelona-2019": "/blog/php-barcelona-2019",
