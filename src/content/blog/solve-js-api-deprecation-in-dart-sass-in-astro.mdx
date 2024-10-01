@@ -1,0 +1,39 @@
+---
+title: "Solve 'Deprecation [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.' in Astro"
+pubDate: 2024-10-02
+author: "Fernando Paredes"
+coverImage: "./img/rocket.jpg"
+coverImageAlt: "Photo of a rocket lifting off the ground"
+tags: ["Astro"]
+seo:
+    description: "Fix the warning 'Deprecation [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.' in Astro projects"
+---
+
+If you are building a website with [Astro](https://astro.build/) and SASS and you are getting this error when running builds or your dev environment:
+
+`Deprecation [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.`
+
+There's a very simple fix. The issue is caused by [Vite](https://vitejs.dev/), which runs Astro builds under the hood trying to use the legacy API of the [sass npm module](https://www.npmjs.com/package/sass).
+To fix it, you simply need to edit the Vite configuration. In Astro, you do that by using the [`vite` parameter](https://docs.astro.build/en/reference/configuration-reference/#vite) in the `astro.config.mjs` file.
+So you simply need to go to that file and add this option:
+
+```typescript
+// @ts-check
+import { defineConfig } from "astro/config";
+
+// https://astro.build/config
+export default defineConfig({
+    // ... all your configuration
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: "modern-compiler"
+                }
+            }
+        }
+    }
+});
+```
+
+That will tell Vite to use the new compiler for Sass and stop using the deprecated one, which should remove the warning from your builds.
